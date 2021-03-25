@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- my CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>ChaCounter</title>
+  </head>
+
+  <body>
+    <h3>Character Counter</h3>
+    <p>
+      The count will update itself as the number of characters in the textbox
+      increases or decreases.
+    </p>
+
+    <textarea
+      placeholder="start typing"
+      onkeyup="updateCounter(this.value)"
+    ></textarea>
+
+    <h4>Total Character Count: <span id="charCountUp">0</span></h4>
+    <h4>Characters Left: <span id="charCountDown">500</span></h4>
+
+    <!-- my script -->
+    <script>
+      function updateCounter(str) {
+        // count and update the total number of characters
+        document.querySelector("#charCountUp").innerHTML = str.length;
+
+        // count down and update the characters left out of 500
+        document.querySelector("#charCountDown").innerHTML = 500 - str.length;
+
+        // change color to red, if characters are more than 500
+        if (500 - str.length < 0) {
+          document.querySelector("#charCountDown").style.color = "#db0a0a";
+        } else {
+          document.querySelector("#charCountDown").style.color = "#111111";
+        }
+      }
+    </script>
+  </body>
+</html>
